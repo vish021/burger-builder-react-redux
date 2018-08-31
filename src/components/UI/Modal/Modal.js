@@ -6,7 +6,7 @@ import BackDrop from '../BackDrop/BackDrop';
 class Modal extends Component {
     //don't unneccessarily re-render Modal if modal is not clicked or shown
     shouldComponentUpdate(nextProp, nextState) {
-        return nextProp.show !== this.props.show;
+        return nextProp.show !== this.props.show || nextProp.children !== this.props.children;
     }
 
     componentWillUpdate() {
