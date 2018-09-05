@@ -5,7 +5,7 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 class Orders extends Component {
     state = {
-        orders: [],
+        orders: [],//Async Redux State
         loading: true
     }
 

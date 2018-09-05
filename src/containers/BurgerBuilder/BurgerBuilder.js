@@ -25,19 +25,19 @@ class BurgerBuilder extends Component {
         ingredients: null,
         totalPrice: 4,
         purchasable: false,
-        purchasing: false,
-        loading: false,
-        error: null
+        purchasing: false,//UI State
+        loading: false,//UI State
+        error: null//UI State
     }
 
     componentDidMount() {
         axios.get('/ingredients.json')
-        .then(response => {
-            this.setState({ingredients: response.data});
-        })
-        .catch(error => {
-            this.setState({error: true});
-        });
+        // .then(response => {
+        //     this.setState({ingredients: response.data});
+        // })
+        // .catch(error => {
+        //     this.setState({error: true});
+        // });
     }
 
     updatedPurchaseState(ingredients) {

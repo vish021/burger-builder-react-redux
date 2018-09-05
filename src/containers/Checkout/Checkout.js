@@ -5,8 +5,8 @@ import ContactData from './ContactData/ContactData';
 
 class Checkout extends Component {
     state= {
-        ingredients: null,
-        totalPrice: 0
+        ingredients: null,//Redux State
+        totalPrice: 0//Redux State
     }
 
     componentWillMount() {
