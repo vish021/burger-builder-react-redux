@@ -29,6 +29,7 @@ class App extends Component {
           <Route path="/checkout" component={Checkout} />
           <Route path="/orders" component={Orders} />
           <Route path="/logout" component={Logout} />
+          <Route path="/auth" component={Auth} />{/* it should load Auth which redirects to checkout page after authentication*/}
           <Route path="/" exact component={BurgerBuilder} />
           <Redirect to="/" />
         </Switch>

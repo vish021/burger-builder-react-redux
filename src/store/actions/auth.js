@@ -1,6 +1,5 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
-import { loadavg } from 'os';
 
 export const authStart = () => {
     return {
