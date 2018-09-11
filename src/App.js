@@ -2,12 +2,22 @@ import React, { Component } from 'react';
 import {Route, Switch, withRouter, Redirect} from 'react-router-dom';
 import Layout from './hoc/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
-import Checkout from './containers/Checkout/Checkout';
-import Orders from './containers/Orders/Orders';
-import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 import { connect } from 'react-redux';
 import * as actions from './store/actions/index';
+import asynComponent from './hoc/asyncComponent/asyncComponent';
+
+const asyncCheckout = asynComponent(() => {
+  return import('./containers/Checkout/Checkout');
+});
+
+const asyncOrders = asynComponent(() => {
+  return import('./containers/Orders/Orders');
+});
+
+const asyncAuth = asynComponent(() => {
+  return import('./containers/Auth/Auth');
+});
 
 class App extends Component {
   componentDidMount() {
@@ -17,7 +27,7 @@ class App extends Component {
   render() {
     let routes = (
       <Switch>
-        <Route path="/auth" component={Auth} />
+        <Route path="/auth" component={asyncAuth} />
         <Route path="/" exact component={BurgerBuilder} />
         <Redirect to="/" />
       </Switch>
@@ -26,10 +36,10 @@ class App extends Component {
     if (this.props.isAuthenticated) {
       routes = (
         <Switch>
-          <Route path="/checkout" component={Checkout} />
-          <Route path="/orders" component={Orders} />
+          <Route path="/checkout" component={asyncCheckout} />
+          <Route path="/orders" component={asyncOrders} />
           <Route path="/logout" component={Logout} />
-          <Route path="/auth" component={Auth} />{/* it should load Auth which redirects to checkout page after authentication*/}
+          <Route path="/auth" component={asyncAuth} />{/* it should load Auth which redirects to checkout page after authentication*/}
           <Route path="/" exact component={BurgerBuilder} />
           <Redirect to="/" />
         </Switch>

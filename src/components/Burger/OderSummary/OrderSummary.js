@@ -4,9 +4,6 @@ import Button from '../../UI/Button/Button';
 
 class OrderSummary extends Component  {
     //This can be a stateless component and doesn't have to be a class
-    componentWillUpdate() {
-        console.log('[OrderSummary]', 'will update');
-    }
 
     render() {
         const ingredientSummary = Object.keys(this.props.ingredients)
